@@ -23,6 +23,8 @@ const FEATURES = {
     `ytd-guide-entry-renderer:has(a[href="/feed/explore"]) { display: none !important; }`,
     `ytd-mini-guide-entry-renderer:has(a[href="/feed/trending"]) { display: none !important; }`,
     `ytd-mini-guide-entry-renderer:has(a[href="/feed/explore"]) { display: none !important; }`,
+    `ytd-guide-section-renderer:has(a[href="/feed/shopping"]) { display: none !important; }`,
+    `ytd-guide-section-renderer:has(a[href="/feed/gaming"]) { display: none !important; }`,
   ].join('\n'),
   shortsTab: [
     `a[title="Shorts"] { display: none !important; }`,
