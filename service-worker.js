@@ -25,3 +25,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.set(merged);
   });
 });
+
+chrome.sidePanel
+  .setPanelBehavior({ openPanelOnActionClick: true })
+  .catch((error) => console.error('Failed to enable side panel action behavior:', error));
