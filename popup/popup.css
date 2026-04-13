@@ -1,0 +1,253 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  height: 500px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+/* === Background === */
+.popup-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 16px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* === Glass Card === */
+.glass-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.tagline {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.master-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* === Tab Bar === */
+.tab-bar {
+  display: flex;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 6px 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tab.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* === Toggle List === */
+.toggle-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 4px;
+}
+
+.toggle-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toggle-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toggle-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+/* === Toggle Row === */
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.toggle-row.hidden {
+  display: none;
+}
+
+.toggle-row.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.toggle-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-icon {
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+}
+
+.toggle-label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* === Toggle Switch === */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  transition: background 0.25s ease;
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.toggle input:checked + .slider {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(18px);
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* === Master Toggle (larger) === */
+.master-toggle {
+  width: 40px;
+  height: 20px;
+}
+
+.master-toggle .slider {
+  border-radius: 10px;
+}
+
+.master-toggle .slider::before {
+  height: 16px;
+  width: 16px;
+}
+
+.master-toggle input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+#countText {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.35);
+}
