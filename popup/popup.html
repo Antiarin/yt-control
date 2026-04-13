@@ -2,12 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=360, initial-scale=1.0">
   <title>YT Control</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div id="app">YT Control</div>
+  <div class="popup-bg">
+    <div class="glass-card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-left">
+          <span class="logo">✦ YT Control</span>
+          <span class="tagline">YouTube, your way</span>
+        </div>
+        <div class="header-right">
+          <span class="master-label">Master</span>
+          <label class="toggle master-toggle">
+            <input type="checkbox" id="masterEnabled" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tab Bar -->
+      <div class="tab-bar">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="home">Home</button>
+        <button class="tab" data-tab="watch">Watch</button>
+        <button class="tab" data-tab="nav">Nav</button>
+        <button class="tab" data-tab="search">Search</button>
+      </div>
+
+      <!-- Toggle List -->
+      <div class="toggle-list" id="toggleList">
+        <!-- Home -->
+        <div class="toggle-row" data-key="homeFeed" data-cat="home">
+          <div class="toggle-info"><span class="toggle-icon">🏠</span><span class="toggle-label">Recommendations</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="shortsShelf" data-cat="home">
+          <div class="toggle-info"><span class="toggle-icon">🎬</span><span class="toggle-label">Shorts Shelf</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="trending" data-cat="home">
+          <div class="toggle-info"><span class="toggle-icon">🔥</span><span class="toggle-label">Trending / Explore</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+
+        <!-- Nav -->
+        <div class="toggle-row" data-key="shortsTab" data-cat="nav">
+          <div class="toggle-info"><span class="toggle-icon">⚡</span><span class="toggle-label">Shorts Tab</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="subscriptions" data-cat="nav">
+          <div class="toggle-info"><span class="toggle-icon">📺</span><span class="toggle-label">Subscriptions Tab</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="notifications" data-cat="nav">
+          <div class="toggle-info"><span class="toggle-icon">🔔</span><span class="toggle-label">Notifications Bell</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+
+        <!-- Watch -->
+        <div class="toggle-row" data-key="relatedVideos" data-cat="watch">
+          <div class="toggle-info"><span class="toggle-icon">📋</span><span class="toggle-label">Related Videos</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="comments" data-cat="watch">
+          <div class="toggle-info"><span class="toggle-icon">💬</span><span class="toggle-label">Comments</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="autoplay" data-cat="watch">
+          <div class="toggle-info"><span class="toggle-icon">⏭️</span><span class="toggle-label">Autoplay</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="endScreen" data-cat="watch">
+          <div class="toggle-info"><span class="toggle-icon">🎴</span><span class="toggle-label">End Screen Cards</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="liveChat" data-cat="watch">
+          <div class="toggle-info"><span class="toggle-icon">📡</span><span class="toggle-label">Live Chat</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+
+        <!-- Search -->
+        <div class="toggle-row" data-key="searchSuggestions" data-cat="search">
+          <div class="toggle-info"><span class="toggle-icon">🔍</span><span class="toggle-label">Search Suggestions</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="thumbnails" data-cat="search">
+          <div class="toggle-info"><span class="toggle-icon">🖼️</span><span class="toggle-label">Thumbnails</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <div class="toggle-row" data-key="voiceSearch" data-cat="search">
+          <div class="toggle-info"><span class="toggle-icon">🎙️</span><span class="toggle-label">Voice Search</span></div>
+          <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer" id="footer">
+        <span id="countText">14 of 14 shown</span>
+      </div>
+
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
