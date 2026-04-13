@@ -2,20 +2,64 @@
 // Injects CSS to hide YouTube UI elements based on user settings
 
 // Part 1: Feature-to-CSS mapping
+// Each feature can have multiple CSS rules separated as an array joined by newlines
 const FEATURES = {
-  homeFeed: `ytd-browse[page-subtype="home"] ytd-rich-grid-renderer { display: none !important; }`,
-  shortsShelf: `ytd-rich-shelf-renderer[is-shorts], ytd-reel-shelf-renderer { display: none !important; }`,
-  trending: `ytd-guide-entry-renderer:has(a[href="/feed/trending"]), ytd-guide-entry-renderer:has(a[href="/feed/explore"]), ytd-mini-guide-entry-renderer:has(a[href="/feed/trending"]), ytd-mini-guide-entry-renderer:has(a[href="/feed/explore"]) { display: none !important; }`,
-  shortsTab: `ytd-guide-entry-renderer:has(a[title="Shorts"]), ytd-mini-guide-entry-renderer:has(a[title="Shorts"]) { display: none !important; }`,
-  subscriptions: `ytd-guide-entry-renderer:has(a[href*="feed/subscriptions"]), ytd-guide-section-renderer:has(a[href="/feed/subscriptions"]), ytd-mini-guide-entry-renderer:has(a[href*="feed/subscriptions"]) { display: none !important; }`,
+  homeFeed: [
+    `ytd-browse[page-subtype="home"] ytd-rich-grid-renderer { display: none !important; }`,
+    `ytd-browse[page-subtype="home"] #contents.ytd-rich-grid-renderer { display: none !important; }`,
+    `ytd-browse[page-subtype="home"] ytd-rich-item-renderer { display: none !important; }`,
+    `ytd-browse[page-subtype="home"] ytd-rich-section-renderer { display: none !important; }`,
+  ].join('\n'),
+  shortsShelf: [
+    `ytd-reel-shelf-renderer { display: none !important; }`,
+    `ytd-rich-shelf-renderer[is-shorts] { display: none !important; }`,
+    `ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) { display: none !important; }`,
+    `[is-shorts] { display: none !important; }`,
+  ].join('\n'),
+  trending: [
+    `a[href="/feed/trending"] { display: none !important; }`,
+    `a[href="/feed/explore"] { display: none !important; }`,
+    `ytd-guide-entry-renderer:has(a[href="/feed/trending"]) { display: none !important; }`,
+    `ytd-guide-entry-renderer:has(a[href="/feed/explore"]) { display: none !important; }`,
+    `ytd-mini-guide-entry-renderer:has(a[href="/feed/trending"]) { display: none !important; }`,
+    `ytd-mini-guide-entry-renderer:has(a[href="/feed/explore"]) { display: none !important; }`,
+  ].join('\n'),
+  shortsTab: [
+    `a[title="Shorts"] { display: none !important; }`,
+    `ytd-guide-entry-renderer:has(a[title="Shorts"]) { display: none !important; }`,
+    `ytd-mini-guide-entry-renderer[aria-label="Shorts"] { display: none !important; }`,
+    `ytd-mini-guide-entry-renderer:has(a[title="Shorts"]) { display: none !important; }`,
+  ].join('\n'),
+  subscriptions: [
+    `ytd-guide-entry-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }`,
+    `ytd-mini-guide-entry-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }`,
+    `ytd-guide-section-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }`,
+    `ytd-guide-section-renderer.style-scope:nth-of-type(2) { display: none !important; }`,
+  ].join('\n'),
   notifications: `ytd-notification-topbar-button-renderer { display: none !important; }`,
-  relatedVideos: `ytd-watch-next-secondary-results-renderer { display: none !important; }`,
+  relatedVideos: [
+    `ytd-watch-next-secondary-results-renderer { display: none !important; }`,
+    `#related { display: none !important; }`,
+    `#secondary-inner #related { display: none !important; }`,
+  ].join('\n'),
   comments: `#comments, ytd-comments { display: none !important; }`,
   autoplay: `.ytp-autonav-toggle-button-container { display: none !important; }`,
-  endScreen: `.ytp-ce-element { display: none !important; }`,
+  endScreen: [
+    `.ytp-ce-element { display: none !important; }`,
+    `.ytp-endscreen-content { display: none !important; }`,
+  ].join('\n'),
   liveChat: `ytd-live-chat-frame { display: none !important; }`,
-  searchSuggestions: `.sbdd_b, ytd-searchbox .ytSearchboxComponentSuggestionRenderer { display: none !important; }`,
-  thumbnails: `ytd-thumbnail, yt-thumbnail-view-model, ytd-playlist-thumbnail, .rich-thumbnail, #thumbnail, #video-preview, .yt-lockup-view-model-wiz__content-image, #thumbnail-container, .shortsLockupViewModelHostThumbnailContainer { display: none !important; }`,
+  searchSuggestions: [
+    `.sbdd_b { display: none !important; }`,
+    `.ytSearchboxComponentSuggestionsContainer { display: none !important; }`,
+  ].join('\n'),
+  thumbnails: [
+    `ytd-thumbnail { display: none !important; }`,
+    `yt-thumbnail-view-model { display: none !important; }`,
+    `ytd-playlist-thumbnail { display: none !important; }`,
+    `.yt-lockup-view-model-wiz__content-image { display: none !important; }`,
+    `#thumbnail-container { display: none !important; }`,
+  ].join('\n'),
   voiceSearch: `#voice-search-button { display: none !important; }`
 };
 
