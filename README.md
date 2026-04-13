@@ -2,7 +2,7 @@
 
 YT Control is a Chrome extension that lets you hide selected YouTube interface elements such as recommendations, Shorts, comments, related videos, thumbnails, and search suggestions.
 
-The extension now opens in the Chrome side panel instead of a toolbar popup. The source code is authored in TypeScript and compiled to the runtime JavaScript files that Chrome loads.
+The extension opens in the Chrome side panel. The source code is authored in TypeScript and compiled into a loadable extension under `dist/`.
 
 ## Development
 
@@ -29,12 +29,12 @@ npm run typecheck
 1. Open `chrome://extensions`.
 2. Enable Developer mode.
 3. Click Load unpacked.
-4. Select this `yt-control` directory.
+4. Select the `dist/` directory inside this project.
 
 Click the extension icon in the toolbar to open the side panel.
 
 ## Project Structure
 
 - `src/` contains the TypeScript source files.
-- `content.js`, `service-worker.js`, and `popup/popup.js` are the compiled extension scripts loaded by Chrome.
-- `manifest.json` configures the Chrome extension and side panel entrypoint.
+- `manifest.json`, `popup/popup.html`, `popup/popup.css`, and `icons/` are the source assets copied into the build output.
+- `dist/` contains the compiled extension that Chrome should load.
