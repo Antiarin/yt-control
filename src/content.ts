@@ -47,7 +47,7 @@ const FEATURES: Record<FeatureKey, string> = {
     'ytd-reel-shelf-renderer { display: none !important; }',
     'ytd-rich-shelf-renderer[is-shorts] { display: none !important; }',
     'ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]) { display: none !important; }',
-    '[is-shorts] { display: none !important; }'
+    'ytd-rich-section-renderer[is-shorts] { display: none !important; }'
   ].join('\n'),
   trending: [
     'ytd-guide-section-renderer:has(a[title="Shopping"]) { display: none !important; }',
@@ -67,8 +67,7 @@ const FEATURES: Record<FeatureKey, string> = {
   subscriptions: [
     'ytd-guide-entry-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }',
     'ytd-mini-guide-entry-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }',
-    'ytd-guide-section-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }',
-    'ytd-guide-section-renderer.style-scope:nth-of-type(2) { display: none !important; }'
+    'ytd-guide-section-renderer:has(a[href="/feed/subscriptions"]) { display: none !important; }'
   ].join('\n'),
   notifications: 'ytd-notification-topbar-button-renderer { display: none !important; }',
   relatedVideos: [
