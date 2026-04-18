@@ -1,40 +1,66 @@
 # YT Control
 
-YT Control is a Chrome extension that lets you hide selected YouTube interface elements such as recommendations, Shorts, comments, related videos, thumbnails, and search suggestions.
+A Chrome extension that lets you toggle 14 YouTube UI elements on or off -- recommendations, Shorts, comments, related videos, thumbnails, and more.
 
-The extension opens in the Chrome side panel. The source code is authored in TypeScript and compiled into a loadable extension under `dist/`.
+Opens in the Chrome side panel. Built with TypeScript, compiled to a loadable Manifest V3 extension.
+
+[![CI](https://github.com/Antiarin/yt-control/actions/workflows/ci.yml/badge.svg)](https://github.com/Antiarin/yt-control/actions/workflows/ci.yml)
+
+## Install
+
+Download the latest release from [**Releases**](https://github.com/Antiarin/yt-control/releases/tag/v1.0.0), then:
+
+1. Unzip the downloaded file.
+2. Open `chrome://extensions` and enable Developer Mode.
+3. Click **Load unpacked** and select the unzipped folder.
+4. Click the extension icon in the toolbar to open the side panel.
+
+## Features
+
+- **14 toggles** across Home, Watch, Nav, and Search categories
+- **Master switch** to enable/disable all hiding at once
+- **Side panel UI** with categorized tabs and glassmorphic dark theme
+- **CSS-only injection** for instant, flicker-free toggling
+- **Synced settings** across devices via `chrome.storage.sync`
+- **SPA-aware** -- re-applies on YouTube client-side navigation
 
 ## Development
 
-Install dependencies:
-
 ```sh
 npm install
-```
-
-Build the extension:
-
-```sh
 npm run build
 ```
 
-Type-check without emitting files:
+Load the `dist/` directory as an unpacked extension in Chrome.
 
-```sh
-npm run typecheck
-```
+### Scripts
 
-## Load In Chrome
+| Command | Description |
+|---------|-------------|
+| `npm run build` | Compile TypeScript and copy static assets to `dist/` |
+| `npm run typecheck` | Type-check without emitting files |
+| `npm run lint` | Run ESLint on `src/` |
+| `npm run lint:fix` | Run ESLint with auto-fix |
+| `npm run format` | Format source files with Prettier |
+| `npm run format:check` | Check formatting without writing |
 
-1. Open `chrome://extensions`.
-2. Enable Developer mode.
-3. Click Load unpacked.
-4. Select the `dist/` directory inside this project.
-
-Click the extension icon in the toolbar to open the side panel.
+A pre-commit hook runs ESLint and Prettier on staged files via [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/lint-staged/lint-staged).
 
 ## Project Structure
 
-- `src/` contains the TypeScript source files.
-- `manifest.json`, `popup/popup.html`, `popup/popup.css`, and `icons/` are the source assets copied into the build output.
-- `dist/` contains the compiled extension that Chrome should load.
+```
+src/
+  content.ts          Content script -- CSS injection engine
+  service-worker.ts   Sets defaults on install, enables side panel
+  popup/popup.ts      Side panel toggle logic and tab filtering
+  chrome.d.ts         Minimal Chrome API type declarations
+popup/
+  popup.html          Side panel markup
+  popup.css           Glassmorphic dark theme styles
+manifest.json         Extension manifest (copied to dist)
+icons/                Extension icons (copied to dist)
+```
+
+## License
+
+[MIT](LICENSE)

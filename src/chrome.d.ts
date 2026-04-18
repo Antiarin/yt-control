@@ -13,7 +13,7 @@ declare namespace chrome {
     interface StorageArea {
       get(
         keys: string | string[] | Record<string, unknown> | null,
-        callback: (items: Record<string, unknown>) => void
+        callback: (items: Record<string, unknown>) => void,
       ): void;
       set(items: Record<string, unknown>, callback?: () => void): void;
     }
@@ -21,9 +21,7 @@ declare namespace chrome {
     const sync: StorageArea;
 
     const onChanged: {
-      addListener(
-        callback: (changes: StorageChanges, areaName: string) => void
-      ): void;
+      addListener(callback: (changes: StorageChanges, areaName: string) => void): void;
     };
   }
 
