@@ -34,6 +34,7 @@
           <button class="tab" data-tab="watch">Watch</button>
           <button class="tab" data-tab="sidebar">Sidebar</button>
           <button class="tab" data-tab="header">Header</button>
+          <button class="tab" data-tab="behavior">Behavior</button>
         </div>
 
         <!-- Toggle List -->
@@ -606,11 +607,99 @@
               <input type="checkbox" checked /><span class="slider"></span>
             </label>
           </div>
+
+          <!-- ========== Behavior ========== -->
+          <div class="toggle-row" data-key="stopAutoplay" data-cat="behavior">
+            <div class="toggle-info">
+              <span class="toggle-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="14" y="4" width="4" height="16" rx="1" />
+                  <rect x="6" y="4" width="4" height="16" rx="1" />
+                </svg>
+              </span>
+              <span class="toggle-label">Stop Autoplay</span>
+            </div>
+            <label class="toggle"> <input type="checkbox" /><span class="slider"></span> </label>
+          </div>
+          <div class="toggle-row" data-key="dismissStillWatching" data-cat="behavior">
+            <div class="toggle-info">
+              <span class="toggle-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m15 9-6 6" />
+                  <path d="m9 9 6 6" />
+                </svg>
+              </span>
+              <span class="toggle-label">Dismiss Still Watching</span>
+            </div>
+            <label class="toggle"> <input type="checkbox" /><span class="slider"></span> </label>
+          </div>
+          <div class="toggle-row" data-key="autoSkipAds" data-cat="behavior">
+            <div class="toggle-info">
+              <span class="toggle-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polygon points="13 19 22 12 13 5 13 19" />
+                  <polygon points="2 19 11 12 2 5 2 19" />
+                </svg>
+              </span>
+              <span class="toggle-label">Auto-skip Ads</span>
+            </div>
+            <label class="toggle"> <input type="checkbox" /><span class="slider"></span> </label>
+          </div>
+          <div class="toggle-row" data-key="shortsToWatch" data-cat="behavior">
+            <div class="toggle-info">
+              <span class="toggle-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 12h8" />
+                  <path d="m12 16 4-4-4-4" />
+                </svg>
+              </span>
+              <span class="toggle-label">Redirect Shorts</span>
+            </div>
+            <label class="toggle"> <input type="checkbox" /><span class="slider"></span> </label>
+          </div>
         </div>
 
         <!-- Footer -->
         <div class="footer" id="footer">
-          <span id="countText">23 of 23 shown</span>
+          <span id="countText">27 of 27 shown</span>
         </div>
       </div>
     </div>

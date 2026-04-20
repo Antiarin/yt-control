@@ -1,5 +1,5 @@
 (() => {
-  type FeatureKey =
+  type CssFeatureKey =
     | 'homeFeed'
     | 'homeChips'
     | 'shortsShelf'
@@ -24,12 +24,17 @@
     | 'voiceSearch'
     | 'thumbnails';
 
+  type BehaviorKey = 'stopAutoplay' | 'shortsToWatch' | 'dismissStillWatching' | 'autoSkipAds';
+
+  type FeatureKey = CssFeatureKey | BehaviorKey;
+
   type Settings = {
     masterEnabled?: boolean;
   } & Partial<Record<FeatureKey, boolean>>;
 
   const DEFAULTS: Required<Settings> = {
     masterEnabled: true,
+    // CSS features: true = element shown (YouTube default)
     homeFeed: true,
     homeChips: true,
     shortsShelf: true,
@@ -53,18 +58,21 @@
     searchSuggestions: true,
     voiceSearch: true,
     thumbnails: true,
+    // Behaviors: true = extension intervenes. Ship two active by default.
+    stopAutoplay: true,
+    dismissStillWatching: true,
+    shortsToWatch: false,
+    autoSkipAds: false,
   };
 
   function migrateLegacyKeys(existing: Record<string, unknown>): Record<string, unknown> {
     const migrated = { ...existing };
-
     if ('trending' in migrated) {
       if (!('explore' in migrated)) {
         migrated['explore'] = migrated['trending'];
       }
       delete migrated['trending'];
     }
-
     return migrated;
   }
 
@@ -72,7 +80,6 @@
     chrome.storage.sync.get(null, (existing) => {
       const migrated = migrateLegacyKeys(existing);
       chrome.storage.sync.set({ ...DEFAULTS, ...migrated });
-
       if ('trending' in existing) {
         chrome.storage.sync.remove('trending');
       }
