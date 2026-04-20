@@ -1,19 +1,28 @@
 (() => {
   type FeatureKey =
     | 'homeFeed'
+    | 'homeChips'
     | 'shortsShelf'
-    | 'trending'
-    | 'shortsTab'
-    | 'subscriptions'
-    | 'notifications'
+    | 'communityPosts'
+    | 'masthead'
     | 'relatedVideos'
     | 'comments'
     | 'autoplay'
     | 'endScreen'
     | 'liveChat'
+    | 'ambientMode'
+    | 'merchShelf'
+    | 'chaptersPanel'
+    | 'shortsTab'
+    | 'subscriptions'
+    | 'youTab'
+    | 'playables'
+    | 'explore'
+    | 'notifications'
+    | 'createButton'
     | 'searchSuggestions'
-    | 'thumbnails'
-    | 'voiceSearch';
+    | 'voiceSearch'
+    | 'thumbnails';
 
   type Settings = {
     masterEnabled?: boolean;
@@ -21,19 +30,28 @@
 
   const FEATURE_KEYS: readonly FeatureKey[] = [
     'homeFeed',
+    'homeChips',
     'shortsShelf',
-    'trending',
-    'shortsTab',
-    'subscriptions',
-    'notifications',
+    'communityPosts',
+    'masthead',
     'relatedVideos',
     'comments',
     'autoplay',
     'endScreen',
     'liveChat',
+    'ambientMode',
+    'merchShelf',
+    'chaptersPanel',
+    'shortsTab',
+    'subscriptions',
+    'youTab',
+    'playables',
+    'explore',
+    'notifications',
+    'createButton',
     'searchSuggestions',
-    'thumbnails',
     'voiceSearch',
+    'thumbnails',
   ];
 
   const ALL_TAB = 'all';

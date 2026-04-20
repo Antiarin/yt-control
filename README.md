@@ -1,6 +1,6 @@
 # YT Control
 
-A Chrome extension that lets you toggle 14 YouTube UI elements on or off -- recommendations, Shorts, comments, related videos, thumbnails, and more.
+A Chrome extension that lets you toggle 23 YouTube UI elements on or off -- recommendations, Shorts, comments, related videos, thumbnails, ambient mode, merch shelves, community posts, and more.
 
 Opens in the Chrome side panel. Built with TypeScript, compiled to a loadable Manifest V3 extension.
 
@@ -17,7 +17,7 @@ Download the latest release from [**Releases**](https://github.com/Antiarin/yt-c
 
 ## Features
 
-- **14 toggles** across Home, Watch, Nav, and Search categories
+- **23 toggles** across Home, Watch, Sidebar, and Header categories
 - **Master switch** to enable/disable all hiding at once
 - **Side panel UI** with categorized tabs and glassmorphic dark theme
 - **CSS-only injection** for instant, flicker-free toggling

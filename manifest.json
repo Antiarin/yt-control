@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YT Control",
-  "description": "Take control of YouTube — toggle recommendations, Shorts, comments, and 11 more UI elements on or off.",
+  "description": "Take control of YouTube — toggle recommendations, Shorts, comments, and 20 more UI elements on or off.",
   "version": "1.0.0",
   "permissions": ["storage", "sidePanel"],
   "host_permissions": ["*://*.youtube.com/*"],

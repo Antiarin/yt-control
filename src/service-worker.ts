@@ -1,19 +1,28 @@
 (() => {
   type FeatureKey =
     | 'homeFeed'
+    | 'homeChips'
     | 'shortsShelf'
-    | 'trending'
-    | 'shortsTab'
-    | 'subscriptions'
-    | 'notifications'
+    | 'communityPosts'
+    | 'masthead'
     | 'relatedVideos'
     | 'comments'
     | 'autoplay'
     | 'endScreen'
     | 'liveChat'
+    | 'ambientMode'
+    | 'merchShelf'
+    | 'chaptersPanel'
+    | 'shortsTab'
+    | 'subscriptions'
+    | 'youTab'
+    | 'playables'
+    | 'explore'
+    | 'notifications'
+    | 'createButton'
     | 'searchSuggestions'
-    | 'thumbnails'
-    | 'voiceSearch';
+    | 'voiceSearch'
+    | 'thumbnails';
 
   type Settings = {
     masterEnabled?: boolean;
@@ -22,24 +31,51 @@
   const DEFAULTS: Required<Settings> = {
     masterEnabled: true,
     homeFeed: true,
+    homeChips: true,
     shortsShelf: true,
-    trending: true,
-    shortsTab: true,
-    subscriptions: true,
-    notifications: true,
+    communityPosts: true,
+    masthead: true,
     relatedVideos: true,
     comments: true,
     autoplay: true,
     endScreen: true,
     liveChat: true,
+    ambientMode: true,
+    merchShelf: true,
+    chaptersPanel: true,
+    shortsTab: true,
+    subscriptions: true,
+    youTab: true,
+    playables: true,
+    explore: true,
+    notifications: true,
+    createButton: true,
     searchSuggestions: true,
-    thumbnails: true,
     voiceSearch: true,
+    thumbnails: true,
   };
+
+  function migrateLegacyKeys(existing: Record<string, unknown>): Record<string, unknown> {
+    const migrated = { ...existing };
+
+    if ('trending' in migrated) {
+      if (!('explore' in migrated)) {
+        migrated['explore'] = migrated['trending'];
+      }
+      delete migrated['trending'];
+    }
+
+    return migrated;
+  }
 
   chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.sync.get(null, (existing) => {
-      chrome.storage.sync.set({ ...DEFAULTS, ...existing });
+      const migrated = migrateLegacyKeys(existing);
+      chrome.storage.sync.set({ ...DEFAULTS, ...migrated });
+
+      if ('trending' in existing) {
+        chrome.storage.sync.remove('trending');
+      }
     });
   });
 
