@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YT Control — Small promo tile (440×280)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #1a1a1a;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px;
+        gap: 16px;
+      }
+      .instructions {
+        color: #aaa;
+        font-size: 13px;
+        text-align: center;
+      }
+      .canvas {
+        width: 440px;
+        height: 280px;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(245, 158, 11, 0.28), transparent 55%), #0f0f14;
+        border: 1px solid #333;
+        padding: 32px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .mark {
+        width: 100px;
+        height: 100px;
+        border-radius: 22px;
+        background: #18181d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+      .mark svg {
+        width: 72px;
+        height: 72px;
+      }
+      .copy {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .name {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        line-height: 1;
+      }
+      .tag {
+        color: #f59e0b;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .pitch {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 14px;
+        line-height: 1.45;
+        margin-top: 8px;
+        max-width: 240px;
+      }
+      .dots {
+        position: absolute;
+        right: 18px;
+        top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .dot {
+        width: 28px;
+        height: 14px;
+        border-radius: 7px;
+        background: rgba(245, 158, 11, 0.32);
+        position: relative;
+      }
+      .dot::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #fbbf24;
+        border-radius: 50%;
+        position: absolute;
+        left: 16px;
+        top: 2px;
+        box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+      }
+      .dot.off {
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .dot.off::after {
+        background: rgba(255, 255, 255, 0.2);
+        left: 2px;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">
+      Screenshot the <b>440×280 canvas</b> below for the CWS small promo tile.
+    </div>
+    <div class="canvas">
+      <div class="mark">
+        <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M48 26 Q42 26 42 32 L42 96 Q42 102 48 102 Q52 102 55 100 L102 68 Q108 64 102 60 L55 28 Q52 26 48 26 Z"
+            fill="#f59e0b"
+          />
+          <g transform="translate(70 64)">
+            <g fill="#18181d">
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(45)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(90)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(135)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(180)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(225)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(270)" />
+              <rect x="-2.75" y="-17" width="5.5" height="5.5" rx="1" transform="rotate(315)" />
+            </g>
+            <circle r="11.5" fill="#18181d" />
+            <circle r="4" fill="#f59e0b" />
+          </g>
+        </svg>
+      </div>
+      <div class="copy">
+        <div class="tag">Chrome Extension</div>
+        <div class="name">YT Control</div>
+        <div class="pitch">27 toggles to hide, redirect, and tame YouTube's UI.</div>
+      </div>
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot off"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </body>
+</html>

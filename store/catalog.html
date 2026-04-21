@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YT Control — Catalog (1280×800)</title>
+    <style>
+      :root {
+        --amber: #f59e0b;
+        --amber-bright: #fbbf24;
+        --bg: #0f0f14;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #1a1a1a;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px;
+        gap: 16px;
+      }
+      .instructions {
+        color: #aaa;
+        font-size: 13px;
+        text-align: center;
+        max-width: 720px;
+      }
+      .canvas {
+        width: 1280px;
+        height: 800px;
+        background:
+          radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.12), transparent 48%), var(--bg);
+        border: 1px solid #333;
+        padding: 42px 56px;
+        position: relative;
+      }
+      .hdr {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 26px;
+      }
+      .title {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+      }
+      .title .count {
+        color: var(--amber);
+      }
+      .sub {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 15px;
+        margin-top: 6px;
+      }
+      .logo-tag {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.25);
+        border-radius: 999px;
+      }
+      .logo-tag svg {
+        width: 18px;
+        height: 18px;
+      }
+      .logo-tag-text {
+        color: var(--amber-bright);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+      }
+      .category {
+        background: rgba(24, 24, 30, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 18px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .cat-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+      .cat-name {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .cat-count {
+        color: var(--amber);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 8px;
+        background: rgba(245, 158, 11, 0.12);
+        border-radius: 999px;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 2px;
+      }
+      .item-ic {
+        width: 14px;
+        height: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        flex-shrink: 0;
+      }
+      .item-ic svg {
+        width: 14px;
+        height: 14px;
+      }
+      .item-name {
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 12.5px;
+        line-height: 1.25;
+      }
+      .footnote {
+        position: absolute;
+        bottom: 32px;
+        left: 56px;
+        right: 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .foot-left {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 12px;
+      }
+      .foot-left b {
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 600;
+      }
+      .tech {
+        display: flex;
+        gap: 8px;
+      }
+      .tech-pill {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 11px;
+        padding: 5px 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">
+      Screenshot only the <b>1280×800 canvas</b> below. Shows all 27 toggles grouped by category.
+    </div>
+
+    <div class="canvas">
+      <div class="hdr">
+        <div>
+          <div class="title"><span class="count">27</span> controls for YouTube</div>
+          <div class="sub">Hide, redirect, automate. All from a side panel.</div>
+        </div>
+        <div class="logo-tag">
+          <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M48 26 Q42 26 42 32 L42 96 Q42 102 48 102 Q52 102 55 100 L102 68 Q108 64 102 60 L55 28 Q52 26 48 26 Z"
+              fill="#f59e0b"
+            />
+          </svg>
+          <span class="logo-tag-text">YT Control</span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- HOME -->
+        <div class="category">
+          <div class="cat-head">
+            <span class="cat-name">Home</span>
+            <span class="cat-count">5</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                <path
+                  d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                /></svg></span
+            ><span class="item-name">Recommendations</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg></span
+            ><span class="item-name">Filter Chips</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M7 3v18" />
+                <path d="M3 12h18" /></svg></span
+            ><span class="item-name">Shorts Shelf</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg></span
+            ><span class="item-name">Community Posts</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m3 11 18-5v12L3 14v-3z" />
+                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg></span
+            ><span class="item-name">Promo Banners</span>
+          </div>
+        </div>
+
+        <!-- WATCH -->
+        <div class="category">
+          <div class="cat-head">
+            <span class="cat-name">Watch</span>
+            <span class="cat-count">8</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 12H3" />
+                <path d="M16 6H3" />
+                <path d="M12 18H3" />
+                <path d="m16 12 5 3-5 3v-6Z" /></svg></span
+            ><span class="item-name">Related Videos</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                /></svg></span
+            ><span class="item-name">Comments</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="5 4 15 12 5 20 5 4" />
+                <line x1="19" x2="19" y1="5" y2="19" /></svg></span
+            ><span class="item-name">Autoplay Toggle</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 7v10" />
+                <path d="M6 5v14" />
+                <rect width="12" height="18" x="10" y="3" rx="2" /></svg></span
+            ><span class="item-name">End-Screen Cards</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19.075 4.933a10 10 0 0 1 0 14.134" />
+                <path d="M4.925 19.067a10 10 0 0 1 0-14.134" />
+                <circle cx="12" cy="12" r="2" /></svg></span
+            ><span class="item-name">Live Chat</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+                /></svg></span
+            ><span class="item-name">Ambient Mode</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" /></svg></span
+            ><span class="item-name">Merch Shelf</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></span
+            ><span class="item-name">Chapters Panel</span>
+          </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="category">
+          <div class="cat-head">
+            <span class="cat-name">Sidebar</span>
+            <span class="cat-count">5</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
+                /></svg></span
+            ><span class="item-name">Shorts Tab</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m17 2-5 5-5-5" />
+                <rect width="20" height="15" x="2" y="7" rx="2" /></svg></span
+            ><span class="item-name">Subscriptions</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" /></svg></span
+            ><span class="item-name">You Tab</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="6" x2="10" y1="11" y2="11" />
+                <line x1="8" x2="8" y1="9" y2="13" />
+                <line x1="15" x2="15.01" y1="12" y2="12" />
+                <line x1="18" x2="18.01" y1="10" y2="10" />
+                <path
+                  d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5"
+                /></svg></span
+            ><span class="item-name">Playables</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"
+                />
+                <circle cx="12" cy="12" r="10" /></svg></span
+            ><span class="item-name">Explore (10 cats)</span>
+          </div>
+        </div>
+
+        <!-- HEADER -->
+        <div class="category">
+          <div class="cat-head">
+            <span class="cat-name">Header</span>
+            <span class="cat-count">5</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+                <path
+                  d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                /></svg></span
+            ><span class="item-name">Notifications</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12h8" />
+                <path d="M12 8v8" /></svg></span
+            ><span class="item-name">Create Button</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" /></svg></span
+            ><span class="item-name">Search Suggest</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" /></svg></span
+            ><span class="item-name">Voice Search</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg></span
+            ><span class="item-name">Thumbnails</span>
+          </div>
+        </div>
+
+        <!-- BEHAVIOR -->
+        <div class="category">
+          <div class="cat-head">
+            <span class="cat-name">Behavior</span>
+            <span class="cat-count">4</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="14" y="4" width="4" height="16" rx="1" />
+                <rect x="6" y="4" width="4" height="16" rx="1" /></svg></span
+            ><span class="item-name">Stop Autoplay</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6" />
+                <path d="m9 9 6 6" /></svg></span
+            ><span class="item-name">Dismiss "Still Watching"</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="13 19 22 12 13 5 13 19" />
+                <polygon points="2 19 11 12 2 5 2 19" /></svg></span
+            ><span class="item-name">Auto-skip Ads</span>
+          </div>
+          <div class="item">
+            <span class="item-ic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12h8" />
+                <path d="m12 16 4-4-4-4" /></svg></span
+            ><span class="item-name">Redirect Shorts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnote">
+        <div class="foot-left">23 hide · 4 behave · <b>Open source, MIT</b> · No tracking</div>
+        <div class="tech">
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Manifest V3</span>
+          <span class="tech-pill">CSS :has()</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
